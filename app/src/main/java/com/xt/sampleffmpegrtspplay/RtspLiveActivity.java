@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -13,7 +14,7 @@ import com.xt.ijkplayer.rtsp.RtspPlayer;
 
 public class RtspLiveActivity extends AppCompatActivity {
     private final static String TAG = RtspLiveActivity.class.getSimpleName();
-    private String[]       permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private RtspPlayer mRtspPlayer;
 
     public static void start(Context context) {
@@ -28,6 +29,16 @@ public class RtspLiveActivity extends AppCompatActivity {
 
         requestPermission();
         initRtsp();
+        initView();
+    }
+
+    private void initView() {
+        findViewById(R.id.btn_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void initRtsp() {
@@ -43,6 +54,7 @@ public class RtspLiveActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
     private void requestPermission() {
