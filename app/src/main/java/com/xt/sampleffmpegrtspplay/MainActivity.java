@@ -85,7 +85,9 @@ public class MainActivity extends AppCompatActivity {
 //                        tv_tick.setText(formatter.format(date));
 
                         long time = currentTime / 1000;
-                        long ms = currentTime % 1000;
+                        long time_ms = currentTime % 1000;
+                        String ms = String.format("%03d", time_ms);
+
                         long time_h = time % 3600;
                         long time_m = time_h / 60;
                         long time_s = time_h % 60;
